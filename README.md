@@ -3,4 +3,4 @@ Unity implementation of the algorithms found in Artificial Intelligence for Game
 
 The demo includes a simple RTS.
 
-Developed by @kahsez and @SpyzViridian
+Developed by @kahsez and José Manuel Vera Menárguez
