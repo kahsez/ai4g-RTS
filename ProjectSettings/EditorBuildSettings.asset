@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 0eff08d78c13c17439b48873d8cbad76
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 9fb2d3c52c3fe8d4d897ecc0b56c8a7a
+  - enabled: 1
+    path: Assets/Scenes/Comparative.unity
+    guid: 24173ac885ad1a34e9fcc18476602952
+  - enabled: 1
+    path: Assets/Scenes/Flocking.unity
+    guid: a02f1c3cebbb6b742ab4134f91290b9e
+  - enabled: 1
+    path: Assets/Scenes/Steerings1.unity
+    guid: e64efe57db0d6f040a739ce36557a25c
+  - enabled: 1
+    path: Assets/Scenes/Steerings2.unity
+    guid: 15de34b74f0e7b34dbc758a31f8ee01a
+  - enabled: 1
+    path: Assets/Scenes/Steerings3.unity
+    guid: 81df56741c74ddd4990ca9547691a292
+  m_configObjects: {}

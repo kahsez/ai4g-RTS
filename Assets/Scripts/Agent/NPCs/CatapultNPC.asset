@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593a41c229a170c48b3f8dd86791bfd0, type: 3}
+  m_Name: CatapultNPC
+  m_EditorClassIdentifier: 
+  _type: 4
+  _sprite: {fileID: 21300000, guid: 04b31f4dc51eec5499cdfb9b2912811a, type: 3}
+  _perceptionRadius: 9
+  _attackRange: 7
+  _attackDamage: 10
+  _attackCooldown: 2
+  _maxHealth: 60
+  _soldierADF:
+    attackFactor: 1.25
+    defenseFactor: 0.75
+  _knightADF:
+    attackFactor: 0.75
+    defenseFactor: 1.25
+  _saboteurADF:
+    attackFactor: 0.5
+    defenseFactor: 1.5
+  _archerADF:
+    attackFactor: 1.5
+    defenseFactor: 0.5
+  _catapultADF:
+    attackFactor: 1
+    defenseFactor: 1
+  _plainsFactor:
+    speedFactor: 0.5
+    attackDefenseFactor:
+      attackFactor: 2
+      defenseFactor: 0.75
+  _forestFactor:
+    speedFactor: 0.25
+    attackDefenseFactor:
+      attackFactor: 0.1
+      defenseFactor: 0.25
+  _desertFactor:
+    speedFactor: 0.3
+    attackDefenseFactor:
+      attackFactor: 1.5
+      defenseFactor: 0.9
+  _roadFactor:
+    speedFactor: 1
+    attackDefenseFactor:
+      attackFactor: 1.5
+      defenseFactor: 1
+  _mountainFactor:
+    speedFactor: Infinity
+    attackDefenseFactor:
+      attackFactor: 1
+      defenseFactor: 1
+  _heuristicFunction: 2
