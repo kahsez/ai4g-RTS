@@ -1,5 +1,4 @@
-﻿using System.Security.Policy;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 /// <summary>
