@@ -36,7 +36,6 @@ jobs:
         id: testRunner
         with:
           projectPath: ${{ matrix.projectPath }}
-          unityVersion: auto
       - uses: actions/upload-artifact@v1
         with:
           name: Test results (all modes)
