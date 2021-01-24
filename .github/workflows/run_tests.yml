@@ -16,7 +16,7 @@ jobs:
         projectPath:
           - ./
         unityVersion:
-          - 2020.1.13f1
+          - auto
         targetPlatform:
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
     steps:
@@ -30,7 +30,7 @@ jobs:
           restore-keys: |
             Library-${{ matrix.projectPath }}-
             Library-
-      - uses: webbertakken/unity-test-runner@v1.7
+      - uses: webbertakken/unity-test-runner@v2.0-alpha-1
         id: testRunner
         with:
           projectPath: ${{ matrix.projectPath }}
