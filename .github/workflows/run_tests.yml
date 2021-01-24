@@ -36,6 +36,7 @@ jobs:
         id: testRunner
         with:
           projectPath: ${{ matrix.projectPath }}
+          customParameters: '-nographics'
       - uses: actions/upload-artifact@v2.2.2
         with:
           name: Test results (all modes)
