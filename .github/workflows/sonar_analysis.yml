@@ -14,7 +14,15 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: MirrorNG/unity-sonarscanner@1.0.1
+        with:
+          buildCommand: dotnet build .
+          testCommand: dotnet test .
+          projectKey: kahsez_ai4g-RTS
+          projectName: ai4g-RTS
+          sonarOrganisation: kahsez
+          beginArguments: /d:sonar.verbose="true" /d:sonar.cs.opencover.reportsPaths="/path/to/coverage.xml" /d:sonar.coverage.exclusions="**/*.cs"
+  
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
