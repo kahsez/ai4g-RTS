@@ -9,20 +9,53 @@ jobs:
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
+    env:
+      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
     steps:
       - uses: actions/checkout@v2.3.4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarCloud Scan
-        uses: MirrorNG/unity-sonarscanner@1.0.1
+      
+      # Configure test runner
+      - name: Run editor Tests
+        uses: MirrorNG/unity-runner@3.1.0
         with:
-          buildCommand: dotnet build .
-          testCommand: dotnet test .
+          args: -runTests -testPlatform editmode -testResults Tests/editmode-results.xml -enableCodeCoverage -coverageResultsPath Tests
+
+      - name: Run play Tests
+        uses: MirrorNG/unity-runner@3.1.0
+        with:
+          args: -runTests -testPlatform playmode -testResults Tests/playmode-results.xml -enableCodeCoverage -coverageResultsPath Tests
+          
+      # Upload artifacts
+      - name: Archive test results
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: Test results
+          path: Tests
+
+      - name: Publish test results
+        uses: MirrorNG/nunit-reporter@v1.0.9
+        if: always()
+        with:
+          path: "Tests/*.xml"
+          access-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: SonarCloud analysis
+        uses: MirrorNG/unity-runner@3.1.0
+        with:
+          entrypoint: /sonar-scanner.sh
           projectKey: kahsez_ai4g-RTS
           projectName: ai4g-RTS
-          sonarOrganisation: kahsez
-          beginArguments: /d:sonar.verbose="true" /d:sonar.cs.opencover.reportsPaths="/path/to/coverage.xml" /d:sonar.coverage.exclusions="**/*.cs"
-  
+          onarOrganisation: kahsez
+          beginArguments: >-
+            /d:sonar.verbose="false" 
+            ${{ steps.semantic.outputs.new_release_published == 'true' && format('/v:{0}',steps.semantic.outputs.new_release_version) || '' }}
+            /d:sonar.cs.nunit.reportsPaths=Tests/editmode-results.xml,Tests/playmode-results.xml 
+            /d:sonar.cs.opencover.reportsPaths=Tests/workspace-opencov/EditMode/TestCoverageResults_0000.xml,Tests/workspace-opencov/PlayMode/TestCoverageResults_0000.xml
         env:
+          FrameworkPathOverride: /opt/Unity/Editor/Data/MonoBleedingEdge/
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
