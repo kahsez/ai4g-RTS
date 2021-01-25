@@ -22,6 +22,12 @@ jobs:
         with:
           entrypoint: /activate.sh
 
+      - name: Generate Solution
+        uses: MirrorNG/unity-runner@3.1.0
+        with:
+          # Arguments to pass to unity
+          args: -buildTarget StandaloneWindows64 -customBuildName MirrorNG -customBuildPath ./build/StandaloneWindows64 -projectPath . -executeMethod  UnityEditor.SyncVS.SyncSolution -quit
+
       # Configure test runner
       - name: Run editor Tests
         uses: MirrorNG/unity-runner@3.1.0
