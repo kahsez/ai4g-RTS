@@ -17,6 +17,11 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       
+      - name: Activate license
+        uses: MirrorNG/unity-runner@3.1.0
+        with:
+          entrypoint: /activate.sh
+
       # Configure test runner
       - name: Run editor Tests
         uses: MirrorNG/unity-runner@3.1.0
