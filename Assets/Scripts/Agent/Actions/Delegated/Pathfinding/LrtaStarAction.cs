@@ -34,7 +34,7 @@ public class LrtaStarAction : PathfindingAction
     /// <param name="priority">The priority.</param>
     /// <param name="agent">The agent.</param>
     /// <param name="targetPos">The target position.</param>
-    public LrtaStarAction(float expiryTime, int priority, AgentNPC agent, Vector2Int targetPos) 
+    public LrtaStarAction(float expiryTime, int priority, AgentNpc agent, Vector2Int targetPos) 
         : base(expiryTime, priority, agent, targetPos)
     {
         _lrta = new LRTAStar(agent.CurrentMap, agent, agent.MapPosition, targetPos);

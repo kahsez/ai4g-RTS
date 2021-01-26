@@ -20,7 +20,7 @@ public class Face : Align
         _target = obj.AddComponent<Agent>();
     }
 
-    public override Steering GetSteering(AgentNPC agent)
+    public override Steering GetSteering(AgentNpc agent)
     {
         if (_faceTarget == null) return new Steering();
 

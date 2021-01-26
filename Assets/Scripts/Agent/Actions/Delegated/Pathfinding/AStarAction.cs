@@ -26,7 +26,7 @@ public class AStarAction : PathfindingAction
     /// <param name="priority">The priority.</param>
     /// <param name="agent">The agent.</param>
     /// <param name="targetPos">The target position.</param>
-    public AStarAction(float expiryTime, int priority, AgentNPC agent, Vector2Int targetPos, InfluenceMap influenceMap = null) 
+    public AStarAction(float expiryTime, int priority, AgentNpc agent, Vector2Int targetPos, InfluenceMap influenceMap = null) 
         : base(expiryTime, priority, agent, targetPos)
     {
         _coroutineController =

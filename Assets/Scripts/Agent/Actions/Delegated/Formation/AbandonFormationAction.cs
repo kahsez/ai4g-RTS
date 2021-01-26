@@ -14,7 +14,7 @@ public class AbandonFormationAction : Action
     /// <param name="expiryTime">The expiry time.</param>
     /// <param name="priority">The priority.</param>
     /// <param name="agent">The agent.</param>
-    public AbandonFormationAction(float expiryTime, int priority, AgentNPC agent) : base(expiryTime, priority, agent)
+    public AbandonFormationAction(float expiryTime, int priority, AgentNpc agent) : base(expiryTime, priority, agent)
     {
         _agent = agent;
         _started = false;

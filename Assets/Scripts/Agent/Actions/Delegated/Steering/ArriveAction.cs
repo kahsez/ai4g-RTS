@@ -15,7 +15,7 @@ public class ArriveAction : SteeringAction
     /// <param name="priority">The priority.</param>
     /// <param name="agent">The agent.</param>
     /// <param name="target">The target.</param>
-    public ArriveAction(float expiryTime, int priority, AgentNPC agent, Agent target) : base(expiryTime, priority, agent, target)
+    public ArriveAction(float expiryTime, int priority, AgentNpc agent, Agent target) : base(expiryTime, priority, agent, target)
     {
     }
 

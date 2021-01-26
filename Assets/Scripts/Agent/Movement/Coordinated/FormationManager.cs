@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AgentNPC))]
+[RequireComponent(typeof(AgentNpc))]
 public class FormationManager : MonoBehaviour
 {
     ///////////////////////////////////////////////////
@@ -18,7 +18,7 @@ public class FormationManager : MonoBehaviour
     /// <summary>
     /// List to keep track of all the agents in the formation.
     /// </summary>
-    private List<AgentNPC> _agentsInSlots = new List<AgentNPC>();
+    private List<AgentNpc> _agentsInSlots = new List<AgentNpc>();
 
     /// <summary>
     /// Holds a Static structure representing the drift offset for
@@ -34,7 +34,7 @@ public class FormationManager : MonoBehaviour
     /// <summary>
     /// Invisible leader that acts as anchor point
     /// </summary>
-    private AgentNPC _invisibleLeader;
+    private AgentNpc _invisibleLeader;
 
 
     ///////////////////////////////////////////////////
@@ -47,7 +47,7 @@ public class FormationManager : MonoBehaviour
     /// <value>
     /// The invisible leader.
     /// </value>
-    public AgentNPC InvisibleLeader 
+    public AgentNpc InvisibleLeader 
     {
         get { return _invisibleLeader; }
     }
@@ -58,7 +58,7 @@ public class FormationManager : MonoBehaviour
     /// <value>
     /// The agents in formation.
     /// </value>
-    public List<AgentNPC> AgentsInFormation 
+    public List<AgentNpc> AgentsInFormation 
     {
         get { return _agentsInSlots; }
     }
@@ -81,7 +81,7 @@ public class FormationManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _invisibleLeader = this.gameObject.GetComponent<AgentNPC>();
+        _invisibleLeader = this.gameObject.GetComponent<AgentNpc>();
     }
 
     private void Update()
@@ -114,7 +114,7 @@ public class FormationManager : MonoBehaviour
     /// </summary>
     /// <param name="agent">Character to be added</param>
     /// <returns>Returns false if no more slots are available</returns>
-    public bool AddAgent(AgentNPC agent)
+    public bool AddAgent(AgentNpc agent)
     {
         // Find out how many slots we have occupied
         int occupiedSlots = _slotAssignments.Count;
@@ -140,7 +140,7 @@ public class FormationManager : MonoBehaviour
     /// Removes a character from its slot
     /// </summary>
     /// <param name="agent"></param>
-    public void RemoveAgent(AgentNPC agent)
+    public void RemoveAgent(AgentNpc agent)
     {
         // Find the character's slot
         int slot = _slotAssignments.Find(
@@ -260,7 +260,7 @@ public class SlotAssignment
     /// <summary>
     /// The agent
     /// </summary>
-    private AgentNPC _agent;
+    private AgentNpc _agent;
 
     /// <summary>
     /// The slot number
@@ -276,7 +276,7 @@ public class SlotAssignment
     /// Initializes a new instance of the <see cref="SlotAssignment"/> class.
     /// </summary>
     /// <param name="agent">The agent.</param>
-    public SlotAssignment(AgentNPC agent)
+    public SlotAssignment(AgentNpc agent)
     {
         _agent = agent;
         _target = new GameObject(agent.name + " TARGET").AddComponent<Agent>();
@@ -297,7 +297,7 @@ public class SlotAssignment
     /// <value>
     /// The agent.
     /// </value>
-    public AgentNPC Agent
+    public AgentNpc Agent
     {
         get { return _agent; }
     }

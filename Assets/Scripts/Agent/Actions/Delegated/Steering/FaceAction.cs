@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FaceAction : SteeringAction
 {
-    public FaceAction(float expiryTime, int priority, AgentNPC agent, Agent target) : base(expiryTime, priority, agent, target)
+    public FaceAction(float expiryTime, int priority, AgentNpc agent, Agent target) : base(expiryTime, priority, agent, target)
     {
     }
 

@@ -11,7 +11,7 @@ public class AttackAction : Action
 
     private float _timeStamp;
 
-    public AttackAction(float expiryTime, int priority, AgentNPC agent, Agent target) : base(expiryTime, priority, agent)
+    public AttackAction(float expiryTime, int priority, AgentNpc agent, Agent target) : base(expiryTime, priority, agent)
     {
         _target = target;
     }

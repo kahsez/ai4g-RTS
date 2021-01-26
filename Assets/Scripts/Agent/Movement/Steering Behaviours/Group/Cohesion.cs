@@ -29,7 +29,7 @@ public class Cohesion : Seek
     }
 
 
-    public override Steering GetSteering(AgentNPC agent)
+    public override Steering GetSteering(AgentNpc agent)
     {
         int count = 0;
         Vector3 centerOfMass = Vector3.zero;

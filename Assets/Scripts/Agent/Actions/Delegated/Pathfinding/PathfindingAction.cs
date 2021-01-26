@@ -18,7 +18,7 @@ public abstract class PathfindingAction : Action
     ///////////////////// METHODS /////////////////////
     ///////////////////////////////////////////////////
 
-    protected PathfindingAction(float expiryTime, int priority, AgentNPC agent, Vector2Int targetPos) : base(expiryTime, priority, agent)
+    protected PathfindingAction(float expiryTime, int priority, AgentNpc agent, Vector2Int targetPos) : base(expiryTime, priority, agent)
     {
         _targetPos = targetPos;
     }

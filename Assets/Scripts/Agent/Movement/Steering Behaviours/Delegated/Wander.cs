@@ -47,7 +47,7 @@ public class Wander : Face
         base.Start();     
     }
 
-    public override Steering GetSteering(AgentNPC agent)
+    public override Steering GetSteering(AgentNpc agent)
     {
         // 1. Calculate the target to delegate to face
 

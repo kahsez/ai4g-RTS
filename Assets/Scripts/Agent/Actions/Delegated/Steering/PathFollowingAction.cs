@@ -6,7 +6,7 @@ public class PathFollowingAction : SteeringAction
 {
     private Path _path;
 
-    public PathFollowingAction(float expiryTime, int priority, AgentNPC agent, Path path) : base(expiryTime, priority, agent, null)
+    public PathFollowingAction(float expiryTime, int priority, AgentNpc agent, Path path) : base(expiryTime, priority, agent, null)
     {
         _path = path;
     }

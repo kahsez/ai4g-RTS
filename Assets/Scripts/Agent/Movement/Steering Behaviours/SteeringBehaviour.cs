@@ -58,7 +58,7 @@ public abstract class SteeringBehaviour : MonoBehaviour
     /// </summary>
     /// <param name="agent">Agent that will receive the steering</param>
     /// <returns>Resulting steering</returns>
-    public abstract Steering GetSteering(AgentNPC agent);
+    public abstract Steering GetSteering(AgentNpc agent);
 
     /// <summary>
     /// Changes the target

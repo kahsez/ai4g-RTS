@@ -23,7 +23,7 @@ public class Evade : Flee
         _target = obj.AddComponent<Agent>();
     }
 
-    public override Steering GetSteering(AgentNPC agent)
+    public override Steering GetSteering(AgentNpc agent)
     {
         if (_evadeTarget == null) return new Steering();
 

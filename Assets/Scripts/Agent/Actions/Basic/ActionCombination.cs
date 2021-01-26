@@ -27,7 +27,7 @@ public class ActionCombination : Action
     /// <param name="priority">The priority.</param>
     /// <param name="agent">The agent.</param>
     /// <param name="actions">The actions.</param>
-    public ActionCombination(float expiryTime, int priority, AgentNPC agent, List<Action> actions) : base(expiryTime, priority, agent)
+    public ActionCombination(float expiryTime, int priority, AgentNpc agent, List<Action> actions) : base(expiryTime, priority, agent)
     {
         _actions = actions;
     }

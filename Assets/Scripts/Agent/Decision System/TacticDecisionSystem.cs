@@ -9,7 +9,7 @@ public enum NpcMode
     DEFENSE
 }
 
-[RequireComponent(typeof(AgentNPC))]
+[RequireComponent(typeof(AgentNpc))]
 public class TacticDecisionSystem : MonoBehaviour
 {
     public enum NpcState
@@ -28,7 +28,7 @@ public class TacticDecisionSystem : MonoBehaviour
     //////////////////// ATTRIBUTES ///////////////////
     ///////////////////////////////////////////////////
 
-    private AgentNPC _agent;
+    private AgentNpc _agent;
 
     private NpcMode _mode;
 
@@ -348,7 +348,7 @@ public class TacticDecisionSystem : MonoBehaviour
 
     private void Start()
     {
-        _agent = GetComponent<AgentNPC>();
+        _agent = GetComponent<AgentNpc>();
         ChangeMode(NpcMode.OFFENSE, _agent.MapPosition);
         _state = NpcState.ADVANCE;
         _map = GameObject.FindGameObjectWithTag("Map").GetComponent<Map>();
@@ -390,7 +390,7 @@ public class TacticDecisionSystem : MonoBehaviour
         foreach(GameObject enemy in enemies) {
             // For each enemy near the target position
             if(Vector3.Distance(enemy.transform.position, _map.GridToWorld(target)) <= radius) {
-                AgentNPC enemyAgent = enemy.GetComponent<AgentNPC>();
+                AgentNpc enemyAgent = enemy.GetComponent<AgentNpc>();
                 if (mode == NpcMode.OFFENSE) {
                     relevance += _agent.GetAttackFactor(enemyAgent.Type);
                 } else {

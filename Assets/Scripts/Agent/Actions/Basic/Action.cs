@@ -32,7 +32,7 @@ public abstract class Action
     /// <summary>
     /// The agent that performs the action
     /// </summary>
-    protected AgentNPC _agent;
+    protected AgentNpc _agent;
 
     /// <summary>
     /// Determines if the action has started
@@ -88,7 +88,7 @@ public abstract class Action
     /// <param name="expiryTime">The expiry time.</param>
     /// <param name="priority">The priority.</param>
     /// <param name="agent">The agent.</param>
-    protected Action(float expiryTime, int priority, AgentNPC agent)
+    protected Action(float expiryTime, int priority, AgentNpc agent)
     {
         _expiryTime = expiryTime;
         _priority = priority;

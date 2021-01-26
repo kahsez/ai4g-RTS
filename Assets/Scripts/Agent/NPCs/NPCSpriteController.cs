@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(AgentNPC))]
+[RequireComponent(typeof(AgentNpc))]
 public class NPCSpriteController : MonoBehaviour
 {
     ///////////////////////////////////////////////////
@@ -35,7 +35,7 @@ public class NPCSpriteController : MonoBehaviour
             throw new Exception("NPCSprite requires a base sprite and a faction sprite reference");
         }
 
-        AgentNPC aNpc = gameObject.GetComponent<AgentNPC>();
+        AgentNpc aNpc = gameObject.GetComponent<AgentNpc>();
         NPCProperties npcProperties = aNpc.NpcProperties;
         _baseSprite.GetComponent<SpriteRenderer>().sprite = npcProperties.NpcSprite;
         _factionSprite.GetComponent<SpriteRenderer>().color = (aNpc.Faction == NPCProperties.Faction.ALLY) ? Color.cyan : Color.red;

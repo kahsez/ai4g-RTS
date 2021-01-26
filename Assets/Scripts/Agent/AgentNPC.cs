@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 /// Non playable agent that moves depending of its behaviour attached
 /// </summary>
 [RequireComponent(typeof(Path))]
-public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
+public class AgentNpc : Agent, IPathfinder, ISelectable, IFormable
 {
     ///////////////////////////////////////////////////
     //////////////////// ATTRIBUTES ///////////////////
@@ -514,7 +514,7 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
         float attackDefenseFactor = 1f;
         float terrainADF = 1f;
 
-        AgentNPC oppNpc = target as AgentNPC;
+        AgentNpc oppNpc = target as AgentNpc;
         if (oppNpc != null)
         {
             NPCProperties.NPCType oppType = oppNpc.NpcProperties.Type;
@@ -557,7 +557,7 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
         float adf = 0f;
         float maxAdf = Mathf.NegativeInfinity;
         foreach (GameObject enemy in enemies) {
-            AgentNPC enemyAgent = enemy.GetComponent<AgentNPC>();
+            AgentNpc enemyAgent = enemy.GetComponent<AgentNpc>();
             if ((Vector3.Distance(Position, enemyAgent.Position) < PerceptionRadius)) {
                 // Gets the type ADF factor
                 adf = GetAttackDefenseFactor(enemyAgent.Type);
