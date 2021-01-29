@@ -110,7 +110,7 @@ public class AStar : Pathfinding
     private float GetInfluenceCost(IPathfinder pf, Vector2Int pos)
     {
         if (_influenceMap == null) return 1f;
-        if (pf.Faction == NPCProperties.Faction.ALLY)
+        if (pf.Faction == NpcProperties.Faction.ALLY)
         {
             return Mathf.Max(1f, _influenceMap.GetEnemyInfluence(pos) * 2f);
         }

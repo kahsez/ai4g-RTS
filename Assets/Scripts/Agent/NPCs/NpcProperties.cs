@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CreateAssetMenu(fileName = "New NPCProperties", menuName = "IADeJ/NPCProperties")]
-public class NPCProperties : ScriptableObject
+public class NpcProperties : ScriptableObject
 {
     ///////////////////////////////////////////////////
     //////////////////// ATTRIBUTES ///////////////////
@@ -104,7 +104,7 @@ public class NPCProperties : ScriptableObject
     /// <summary>
     /// The heuristic function
     /// </summary>
-    [SerializeField] private HeuristicFunction _heuristicFunction = NPCProperties.HeuristicFunction.CHEBYCHEV;
+    [SerializeField] private HeuristicFunction _heuristicFunction = NpcProperties.HeuristicFunction.CHEBYCHEV;
 
 
     ///////////////////////////////////////////////////

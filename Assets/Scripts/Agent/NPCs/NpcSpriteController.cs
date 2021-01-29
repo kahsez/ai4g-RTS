@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AgentNpc))]
-public class NPCSpriteController : MonoBehaviour
+public class NpcSpriteController : MonoBehaviour
 {
     ///////////////////////////////////////////////////
     //////////////////// ATTRIBUTES ///////////////////
@@ -36,9 +36,9 @@ public class NPCSpriteController : MonoBehaviour
         }
 
         AgentNpc aNpc = gameObject.GetComponent<AgentNpc>();
-        NPCProperties npcProperties = aNpc.NpcProperties;
+        NpcProperties npcProperties = aNpc.NpcProperties;
         _baseSprite.GetComponent<SpriteRenderer>().sprite = npcProperties.NpcSprite;
-        _factionSprite.GetComponent<SpriteRenderer>().color = (aNpc.Faction == NPCProperties.Faction.ALLY) ? Color.cyan : Color.red;
+        _factionSprite.GetComponent<SpriteRenderer>().color = (aNpc.Faction == NpcProperties.Faction.ALLY) ? Color.cyan : Color.red;
     }
 
     private void Awake() {

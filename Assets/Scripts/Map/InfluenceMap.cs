@@ -132,9 +132,9 @@ public class InfluenceMap : MonoBehaviour
     /// </summary>
     /// <param name="npcs">The NPCS.</param>
     /// <param name="faction">The faction.</param>
-    private void UpdateInfluenceMap(GameObject[] npcs, NPCProperties.Faction faction)
+    private void UpdateInfluenceMap(GameObject[] npcs, NpcProperties.Faction faction)
     {
-        GameGrid<float> influenceMap = (faction == NPCProperties.Faction.ALLY) ? _allyInfluenceMap : _enemyInfluenceMap;
+        GameGrid<float> influenceMap = (faction == NpcProperties.Faction.ALLY) ? _allyInfluenceMap : _enemyInfluenceMap;
         foreach (GameObject npc in npcs)
         {
             AgentNpc agent = npc.GetComponent<AgentNpc>();
@@ -168,8 +168,8 @@ public class InfluenceMap : MonoBehaviour
         GameObject[] allies = GameObject.FindGameObjectsWithTag("AllyAgent");
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("EnemyAgent");
 
-        UpdateInfluenceMap(allies, NPCProperties.Faction.ALLY);
-        UpdateInfluenceMap(enemies, NPCProperties.Faction.ENEMY);
+        UpdateInfluenceMap(allies, NpcProperties.Faction.ALLY);
+        UpdateInfluenceMap(enemies, NpcProperties.Faction.ENEMY);
 
         UpdateColor();
     }

@@ -17,5 +17,5 @@ public interface IPathfinder
     /// <returns></returns>
     Func<Vector2Int, Vector2Int, float> GetHeuristicFunc();
 
-    NPCProperties.Faction Faction { get; }
+    NpcProperties.Faction Faction { get; }
 }
