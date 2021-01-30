@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StopAction : Action
 {
-    public StopAction(float expiryTime, int priority, AgentNPC agent) : base(expiryTime, priority, agent)
+    public StopAction(float expiryTime, int priority, AgentNpc agent) : base(expiryTime, priority, agent)
     {
     }
 

@@ -67,12 +67,12 @@ public class GameController : MonoBehaviour
         */
     }
 
-    public void Respawn(AgentNPC agent, float delay)
+    public void Respawn(AgentNpc agent, float delay)
     {
         StartCoroutine(RespawnAgent(agent, delay));
     }
 
-    private IEnumerator RespawnAgent(AgentNPC agent, float delay)
+    private IEnumerator RespawnAgent(AgentNpc agent, float delay)
     {
         yield return new WaitForSeconds(delay);
         agent.gameObject.SetActive(true);

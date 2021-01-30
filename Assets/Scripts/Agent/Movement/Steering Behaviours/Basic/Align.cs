@@ -16,7 +16,7 @@ public class Align : SteeringBehaviour
     ///////////////////// METHODS /////////////////////
     ///////////////////////////////////////////////////
 
-    public override Steering GetSteering(AgentNPC agent)
+    public override Steering GetSteering(AgentNpc agent)
     {
         if (_target == null) return new Steering();
 

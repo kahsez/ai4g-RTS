@@ -224,9 +224,9 @@ public class SelectionController : MonoBehaviour
 
         if (Input.GetMouseButtonUp(1) && (_selection.Count > 0))
         {
-            foreach (AgentNPC agentNpc in _selection)
+            foreach (AgentNpc agentNpc in _selection)
             {
-                AgentNPC agent = agentNpc;
+                AgentNpc agent = agentNpc;
 
                 TacticDecisionSystem tds = agent.GetComponent<TacticDecisionSystem>();
                 tds.ChangeMode(_mode, _map.WorldToGrid(mousePos));
@@ -267,7 +267,7 @@ public class SelectionController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            foreach (AgentNPC agent in _selection)
+            foreach (AgentNpc agent in _selection)
             {
                 Action action = new AbandonFormationAction(3000f, 0, agent);
                 agent.ScheduleAction(action);
@@ -279,7 +279,7 @@ public class SelectionController : MonoBehaviour
 
         // Calculate center of mass
         Vector3 formationCenter = Vector3.zero;
-        foreach (AgentNPC agent in _selection)
+        foreach (AgentNpc agent in _selection)
         {
             formationCenter += agent.Position;
         }
@@ -289,7 +289,7 @@ public class SelectionController : MonoBehaviour
 
         formation.gameObject.SetActive(true);
 
-        foreach (AgentNPC agent in _selection)
+        foreach (AgentNpc agent in _selection)
         {
             Action action = new JoinFormationAction(3000f, 0, agent, formation);
             agent.ScheduleAction(action);
@@ -394,7 +394,7 @@ public class SelectionController : MonoBehaviour
     private void SelectFormation(IFormable formationTarget)
     {
         // Select all agents in this formable agent formation
-        foreach (AgentNPC agent in formationTarget.Formation.AgentsInFormation)
+        foreach (AgentNpc agent in formationTarget.Formation.AgentsInFormation)
         {
             Select(agent);
         }

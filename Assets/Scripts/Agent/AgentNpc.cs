@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 /// Non playable agent that moves depending of its behaviour attached
 /// </summary>
 [RequireComponent(typeof(Path))]
-public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
+public class AgentNpc : Agent, IPathfinder, ISelectable, IFormable
 {
     ///////////////////////////////////////////////////
     //////////////////// ATTRIBUTES ///////////////////
@@ -41,12 +41,12 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
     /// <summary>
     /// The NPC properties
     /// </summary>
-    [SerializeField] private NPCProperties _npcProperties;
+    [SerializeField] private NpcProperties _npcProperties;
 
     /// <summary>
     /// The faction
     /// </summary>
-    [SerializeField] private NPCProperties.Faction _faction;
+    [SerializeField] private NpcProperties.Faction _faction;
 
     /// <summary>
     /// The pathfinding algorithm
@@ -130,7 +130,7 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
     /// <value>
     /// The faction.
     /// </value>
-    public NPCProperties.Faction Faction
+    public NpcProperties.Faction Faction
     {
         get { return _faction; }
     }
@@ -142,7 +142,7 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
     /// <value>
     /// The NPC properties.
     /// </value>
-    public NPCProperties NpcProperties
+    public NpcProperties NpcProperties
     {
         get { return _npcProperties; }
         set { _npcProperties = value; }
@@ -195,7 +195,7 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
     {
         get
         {
-            String strTag = (Faction == NPCProperties.Faction.ALLY) ? "EnemyBase" : "AllyBase";
+            String strTag = (Faction == NpcProperties.Faction.ALLY) ? "EnemyBase" : "AllyBase";
             return GameObject.FindGameObjectWithTag(strTag).GetComponent<Agent>();
         }
     }
@@ -204,12 +204,12 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
     {
         get 
         {
-            String strTag = (Faction == NPCProperties.Faction.ENEMY) ? "EnemyBase" : "AllyBase";
+            String strTag = (Faction == NpcProperties.Faction.ENEMY) ? "EnemyBase" : "AllyBase";
             return GameObject.FindGameObjectWithTag(strTag).GetComponent<Agent>();
         }
     }
 
-    public NPCProperties.NPCType Type 
+    public NpcProperties.NPCType Type 
     {
         get {
             return _npcProperties.Type;
@@ -256,7 +256,7 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
 
         _lineRenderer.shadowCastingMode = ShadowCastingMode.Off;
         _lineRenderer.startColor = _lineRenderer.endColor =
-            (_faction == NPCProperties.Faction.ALLY) ? blueColor : redColor;
+            (_faction == NpcProperties.Faction.ALLY) ? blueColor : redColor;
         _lineRenderer.startWidth = _lineRenderer.endWidth = 0.33f;
         _debugPath = GetComponent<Path>();
 
@@ -426,7 +426,7 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
     /// </summary>
     /// <param name="npcType">Type of the NPC.</param>
     /// <returns></returns>
-    public float GetAttackFactor(NPCProperties.NPCType npcType)
+    public float GetAttackFactor(NpcProperties.NPCType npcType)
     {
         return _npcProperties.GetAttackFactor(npcType);
     }
@@ -437,7 +437,7 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
     /// </summary>
     /// <param name="npcType">Type of the NPC.</param>
     /// <returns></returns>
-    public float GetDefenseFactor(NPCProperties.NPCType npcType)
+    public float GetDefenseFactor(NpcProperties.NPCType npcType)
     {
         return _npcProperties.GetDefenseFactor(npcType);
     }
@@ -452,7 +452,7 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
         return _npcProperties.GetTerrainDefenseFactor(_map.Get(MapPosition));
     }
 
-    public float GetAttackDefenseFactor(NPCProperties.NPCType type)
+    public float GetAttackDefenseFactor(NpcProperties.NPCType type)
     {
         return GetAttackFactor(type) / GetDefenseFactor(type);
     }
@@ -514,11 +514,11 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
         float attackDefenseFactor = 1f;
         float terrainADF = 1f;
 
-        AgentNPC oppNpc = target as AgentNPC;
+        AgentNpc oppNpc = target as AgentNpc;
         if (oppNpc != null)
         {
-            NPCProperties.NPCType oppType = oppNpc.NpcProperties.Type;
-            NPCProperties.NPCType myType = NpcProperties.Type;
+            NpcProperties.NPCType oppType = oppNpc.NpcProperties.Type;
+            NpcProperties.NPCType myType = NpcProperties.Type;
             attackDefenseFactor = GetAttackDefenseFactor(oppType);
             terrainADF = GetAttackFactor(MapPosition) / oppNpc.GetDefenseFactor(MapPosition);
         }
@@ -544,7 +544,7 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
 
     public Agent GetBestEnemyInRange()
     {
-        String strTag = (Faction == NPCProperties.Faction.ALLY) ? "EnemyAgent" : "AllyAgent";
+        String strTag = (Faction == NpcProperties.Faction.ALLY) ? "EnemyAgent" : "AllyAgent";
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(strTag);
         Agent easiestMatchup = null;
 
@@ -557,7 +557,7 @@ public class AgentNPC : Agent, IPathfinder, ISelectable, IFormable
         float adf = 0f;
         float maxAdf = Mathf.NegativeInfinity;
         foreach (GameObject enemy in enemies) {
-            AgentNPC enemyAgent = enemy.GetComponent<AgentNPC>();
+            AgentNpc enemyAgent = enemy.GetComponent<AgentNpc>();
             if ((Vector3.Distance(Position, enemyAgent.Position) < PerceptionRadius)) {
                 // Gets the type ADF factor
                 adf = GetAttackDefenseFactor(enemyAgent.Type);

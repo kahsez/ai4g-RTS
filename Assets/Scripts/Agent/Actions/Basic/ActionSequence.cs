@@ -32,7 +32,7 @@ public class ActionSequence : Action
     /// <param name="expiryTime">The expiry time.</param>
     /// <param name="priority">The priority.</param>
     /// <param name="actions">The actions.</param>
-    public ActionSequence(float expiryTime, int priority, AgentNPC agent, List<Action> actions) : base(expiryTime, priority, agent)
+    public ActionSequence(float expiryTime, int priority, AgentNpc agent, List<Action> actions) : base(expiryTime, priority, agent)
     {
         _actions = actions;
         _activeIndex = 0;

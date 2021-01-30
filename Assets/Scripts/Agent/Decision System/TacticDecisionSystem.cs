@@ -9,7 +9,7 @@ public enum NpcMode
     DEFENSE
 }
 
-[RequireComponent(typeof(AgentNPC))]
+[RequireComponent(typeof(AgentNpc))]
 public class TacticDecisionSystem : MonoBehaviour
 {
     public enum NpcState
@@ -28,7 +28,7 @@ public class TacticDecisionSystem : MonoBehaviour
     //////////////////// ATTRIBUTES ///////////////////
     ///////////////////////////////////////////////////
 
-    private AgentNPC _agent;
+    private AgentNpc _agent;
 
     private NpcMode _mode;
 
@@ -148,7 +148,7 @@ public class TacticDecisionSystem : MonoBehaviour
         else if (_agent.MapPosition == _currentStrategicTarget)
         {
             GameObject[] waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
-            string strTag = (_agent.Faction == NPCProperties.Faction.ALLY) ? "AllyBase" : "EnemyBase";
+            string strTag = (_agent.Faction == NpcProperties.Faction.ALLY) ? "AllyBase" : "EnemyBase";
             GameObject myBase = GameObject.FindGameObjectWithTag(strTag);
 
             Path path = null;
@@ -348,13 +348,13 @@ public class TacticDecisionSystem : MonoBehaviour
 
     private void Start()
     {
-        _agent = GetComponent<AgentNPC>();
+        _agent = GetComponent<AgentNpc>();
         ChangeMode(NpcMode.OFFENSE, _agent.MapPosition);
         _state = NpcState.ADVANCE;
         _map = GameObject.FindGameObjectWithTag("Map").GetComponent<Map>();
         _currentAttackTarget = null;
 
-        String strTag = (_agent.Faction == NPCProperties.Faction.ALLY) ? "AllyHealingPoint" : "EnemyHealingPoint";
+        String strTag = (_agent.Faction == NpcProperties.Faction.ALLY) ? "AllyHealingPoint" : "EnemyHealingPoint";
         _healingPoint = _map.WorldToGrid(GameObject.FindGameObjectWithTag(strTag).transform.position);
     }
 
@@ -384,13 +384,13 @@ public class TacticDecisionSystem : MonoBehaviour
     // Esto lo que hace es obtener un número según lo bien que se le de atacar o defender por las unidades que hay en esa zona
     private float CalculateUnitTypeRelevance(Vector2Int target, NpcMode mode) {
         float radius = 12f;
-        String strTag = (_agent.Faction == NPCProperties.Faction.ALLY) ? "EnemyAgent" : "AllyAgent";
+        String strTag = (_agent.Faction == NpcProperties.Faction.ALLY) ? "EnemyAgent" : "AllyAgent";
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(strTag);
         float relevance = 0f;
         foreach(GameObject enemy in enemies) {
             // For each enemy near the target position
             if(Vector3.Distance(enemy.transform.position, _map.GridToWorld(target)) <= radius) {
-                AgentNPC enemyAgent = enemy.GetComponent<AgentNPC>();
+                AgentNpc enemyAgent = enemy.GetComponent<AgentNpc>();
                 if (mode == NpcMode.OFFENSE) {
                     relevance += _agent.GetAttackFactor(enemyAgent.Type);
                 } else {

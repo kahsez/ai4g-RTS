@@ -92,7 +92,7 @@ public class InfluenceMap : MonoBehaviour
     /// <param name="position">The position.</param>
     /// <param name="distance">The distance.</param>
     /// <returns></returns>
-    private float GetUnitInfluence(AgentNPC unit, Vector2Int position, out float distance)
+    private float GetUnitInfluence(AgentNpc unit, Vector2Int position, out float distance)
     {
         distance = Vector2Int.Distance(unit.MapPosition, position);
         float baseInfluence = 1f;
@@ -132,12 +132,12 @@ public class InfluenceMap : MonoBehaviour
     /// </summary>
     /// <param name="npcs">The NPCS.</param>
     /// <param name="faction">The faction.</param>
-    private void UpdateInfluenceMap(GameObject[] npcs, NPCProperties.Faction faction)
+    private void UpdateInfluenceMap(GameObject[] npcs, NpcProperties.Faction faction)
     {
-        GameGrid<float> influenceMap = (faction == NPCProperties.Faction.ALLY) ? _allyInfluenceMap : _enemyInfluenceMap;
+        GameGrid<float> influenceMap = (faction == NpcProperties.Faction.ALLY) ? _allyInfluenceMap : _enemyInfluenceMap;
         foreach (GameObject npc in npcs)
         {
-            AgentNPC agent = npc.GetComponent<AgentNPC>();
+            AgentNpc agent = npc.GetComponent<AgentNpc>();
             if (agent == null) continue;
 
             for (int i = -RADIUS; i <= RADIUS; i++)
@@ -168,8 +168,8 @@ public class InfluenceMap : MonoBehaviour
         GameObject[] allies = GameObject.FindGameObjectsWithTag("AllyAgent");
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("EnemyAgent");
 
-        UpdateInfluenceMap(allies, NPCProperties.Faction.ALLY);
-        UpdateInfluenceMap(enemies, NPCProperties.Faction.ENEMY);
+        UpdateInfluenceMap(allies, NpcProperties.Faction.ALLY);
+        UpdateInfluenceMap(enemies, NpcProperties.Faction.ENEMY);
 
         UpdateColor();
     }

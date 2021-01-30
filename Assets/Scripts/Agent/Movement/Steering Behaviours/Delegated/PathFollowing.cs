@@ -62,7 +62,7 @@ public class PathFollowing : Seek
         }
     }
 
-    public override Steering GetSteering(AgentNPC agent)
+    public override Steering GetSteering(AgentNpc agent)
     {
         // 1. Calculate the target to delegate to seek
 
@@ -106,7 +106,7 @@ public class PathFollowing : Seek
         }       
     }
 
-    public bool IsFinished(AgentNPC agent)
+    public bool IsFinished(AgentNpc agent)
     {
         if (_path == null) return true;
         Vector2Int currentMapPos = agent.MapPosition;

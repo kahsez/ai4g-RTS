@@ -32,7 +32,7 @@ public class Separation : SteeringBehaviour
     }
 
 
-    public override Steering GetSteering(AgentNPC agent)
+    public override Steering GetSteering(AgentNpc agent)
     {
         // The steering variable holds the output
         Steering steering = new Steering();

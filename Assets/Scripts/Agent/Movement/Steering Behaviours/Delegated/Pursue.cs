@@ -23,7 +23,7 @@ public class Pursue : Seek
         _target = obj.AddComponent<Agent>();
     }
 
-    public override Steering GetSteering(AgentNPC agent)
+    public override Steering GetSteering(AgentNpc agent)
     {
         if (_pursueTarget == null) return new Steering();
 

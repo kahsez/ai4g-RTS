@@ -25,7 +25,7 @@ public class JoinFormationAction : Action
     /// <param name="priority">The priority.</param>
     /// <param name="agent">The agent.</param>
     /// <param name="formation">The formation.</param>
-    public JoinFormationAction(float expiryTime, int priority, AgentNPC agent, FormationManager formation) : base(expiryTime, priority, agent)
+    public JoinFormationAction(float expiryTime, int priority, AgentNpc agent, FormationManager formation) : base(expiryTime, priority, agent)
     {
         _agent = agent;
         _started = false;

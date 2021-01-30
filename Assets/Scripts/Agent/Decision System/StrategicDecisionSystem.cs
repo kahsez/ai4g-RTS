@@ -23,7 +23,7 @@ public class StrategicDecisionSystem : MonoBehaviour
 
     [SerializeField] private GameObject[] _waypoints;
 
-    [SerializeField] private NPCProperties.Faction _faction;
+    [SerializeField] private NpcProperties.Faction _faction;
 
     [SerializeField] private Base _allyBase;
 
@@ -58,7 +58,7 @@ public class StrategicDecisionSystem : MonoBehaviour
     private float CalcDefendBaseNeed(out Vector2Int target)
     {
         target = GetMyBase().MapPosition;
-        float factionMult = (_faction == NPCProperties.Faction.ALLY) ? -1f : 1f;
+        float factionMult = (_faction == NpcProperties.Faction.ALLY) ? -1f : 1f;
         float influence = GetInfluence(target);
         float baseHealthRatio = (1f + GetMyBase().LostHealthPercent) / (1f + GetAdversaryBase().LostHealthPercent);
         return baseHealthRatio * Mathf.Max(0.75f, influence * factionMult);
@@ -67,7 +67,7 @@ public class StrategicDecisionSystem : MonoBehaviour
     private float CalcAttackBaseNeed(out Vector2Int target)
     {
         target = GetAdversaryBase().MapPosition;
-        float factionMult = (_faction == NPCProperties.Faction.ENEMY) ? -1f : 1f;
+        float factionMult = (_faction == NpcProperties.Faction.ENEMY) ? -1f : 1f;
         float influence = GetInfluence(target);
         float baseHealthRatio = (1f + GetAdversaryBase().LostHealthPercent) / (1f + GetMyBase().LostHealthPercent);
         return baseHealthRatio * Mathf.Max(1f, influence * factionMult);
@@ -75,7 +75,7 @@ public class StrategicDecisionSystem : MonoBehaviour
 
     private float CalcPositionNeed(Vector2Int position, out NpcMode needType)
     {
-        float factionMult = (_faction == NPCProperties.Faction.ALLY) ? -1f : 1f;
+        float factionMult = (_faction == NpcProperties.Faction.ALLY) ? -1f : 1f;
         //float attackNeed = GetInfluence(position) * factionMult * InfluenceMultiplier;
         //float defendNeed = ((1f - Mathf.Min(GetMyInfluence(position), 1f)) - GetAdversaryInfluence(position)) * InfluenceMultiplier;
         float attackNeed = Mathf.Max(0f, GetAdversaryInfluence(position) - GetMyInfluence(position));
@@ -93,14 +93,14 @@ public class StrategicDecisionSystem : MonoBehaviour
 
     private int GetMyAgentsCount()
     {
-        if (_faction == NPCProperties.Faction.ALLY)
+        if (_faction == NpcProperties.Faction.ALLY)
             return _allyAgents.Length;
         return _enemyAgents.Length;
     }
 
     private int GetAdversaryAgentsCount()
     {
-        if (_faction == NPCProperties.Faction.ENEMY)
+        if (_faction == NpcProperties.Faction.ENEMY)
             return _allyAgents.Length;
         return _enemyAgents.Length;
     }
@@ -111,24 +111,24 @@ public class StrategicDecisionSystem : MonoBehaviour
 
     private float GetMyInfluence(Vector2Int pos)
     {
-        if (_faction == NPCProperties.Faction.ALLY)
+        if (_faction == NpcProperties.Faction.ALLY)
             return _influenceMap.GetAllyInfluence(pos);
         return _influenceMap.GetEnemyInfluence(pos);
     }
 
     private float GetAdversaryInfluence(Vector2Int pos)
     {
-        return _faction == NPCProperties.Faction.ENEMY ? _influenceMap.GetAllyInfluence(pos) : _influenceMap.GetEnemyInfluence(pos);
+        return _faction == NpcProperties.Faction.ENEMY ? _influenceMap.GetAllyInfluence(pos) : _influenceMap.GetEnemyInfluence(pos);
     }
 
     private Base GetMyBase()
     {
-        return _faction == NPCProperties.Faction.ALLY ? _allyBase : _enemyBase;
+        return _faction == NpcProperties.Faction.ALLY ? _allyBase : _enemyBase;
     }
 
     private Base GetAdversaryBase()
     {
-        return _faction == NPCProperties.Faction.ALLY ? _enemyBase : _allyBase;
+        return _faction == NpcProperties.Faction.ALLY ? _enemyBase : _allyBase;
     }
 
     private Dictionary<Vector2Int, Need> CalcNeeds()
@@ -179,7 +179,7 @@ public class StrategicDecisionSystem : MonoBehaviour
             _timer = 0f;
 
             UpdateAgentLists();
-            GameObject[] agentsGO = (_faction == NPCProperties.Faction.ALLY) ? _allyAgents : _enemyAgents;
+            GameObject[] agentsGO = (_faction == NpcProperties.Faction.ALLY) ? _allyAgents : _enemyAgents;
             List<GameObject> agents = new List<GameObject>(agentsGO);
 
             _oldNeeds = _needs;

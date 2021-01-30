@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(AgentNPC))]
-public class NPCSpriteController : MonoBehaviour
+[RequireComponent(typeof(AgentNpc))]
+public class NpcSpriteController : MonoBehaviour
 {
     ///////////////////////////////////////////////////
     //////////////////// ATTRIBUTES ///////////////////
@@ -35,10 +35,10 @@ public class NPCSpriteController : MonoBehaviour
             throw new Exception("NPCSprite requires a base sprite and a faction sprite reference");
         }
 
-        AgentNPC aNpc = gameObject.GetComponent<AgentNPC>();
-        NPCProperties npcProperties = aNpc.NpcProperties;
+        AgentNpc aNpc = gameObject.GetComponent<AgentNpc>();
+        NpcProperties npcProperties = aNpc.NpcProperties;
         _baseSprite.GetComponent<SpriteRenderer>().sprite = npcProperties.NpcSprite;
-        _factionSprite.GetComponent<SpriteRenderer>().color = (aNpc.Faction == NPCProperties.Faction.ALLY) ? Color.cyan : Color.red;
+        _factionSprite.GetComponent<SpriteRenderer>().color = (aNpc.Faction == NpcProperties.Faction.ALLY) ? Color.cyan : Color.red;
     }
 
     private void Awake() {

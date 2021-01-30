@@ -13,7 +13,7 @@ public class LookWhereYouGoing : Align
         _target = new GameObject(this.name + " invisible target (LOOK)").AddComponent<Agent>();
     }
 
-    public override Steering GetSteering(AgentNPC agent)
+    public override Steering GetSteering(AgentNpc agent)
     {
         // 1. Calculate the target to delegate to align
 
